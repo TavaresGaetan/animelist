@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_120108) do
+ActiveRecord::Schema.define(version: 2020_11_12_134929) do
 
   create_table "animes", force: :cascade do |t|
     t.string "title"
@@ -20,19 +20,19 @@ ActiveRecord::Schema.define(version: 2020_11_12_120108) do
     t.datetime "releasedate"
     t.integer "episodenumber"
     t.string "image"
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_animes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password"
     t.integer "rights"
-    t.integer "animeslist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["animeslist_id"], name: "index_users_on_animeslist_id"
   end
 
-  add_foreign_key "users", "animeslists"
+  add_foreign_key "animes", "users"
 end
