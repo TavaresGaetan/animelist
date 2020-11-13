@@ -1,24 +1,24 @@
 class AnimesController < ApplicationController
-    before_action :set_user
     before_action :set_user_anime, only: [:show, :update, :destroy]
   
-    # GET /users/:user_id/animes
+    # GET /animes
     def index
-      json_response(@user.animes)
+      @animes = Anime.all
+      json_response(@animes)
     end
   
-    # GET /users/:user_id/animes/:id
+    # GET /animes/:id
     def show
       json_response(@anime)
     end
   
-    # POST /users/:user_id/animes
+    # POST /animes
     def create
-      @user.animes.create!(anime_params)
-      json_response(@user, :created)
+      @anime = Anime.create!(anime_params)
+      json_response(@anime, :created)
     end
   
-    # PUT /users/:user_id/animes/:id
+    # PUT /animes/:id
     def update
       @anime.update(anime_params)
       head :no_content
@@ -33,14 +33,10 @@ class AnimesController < ApplicationController
     private
   
     def anime_params
-      params.permit(:name, :done)
+      params.permit(:title, :author, :genre, :rating, :releasedate, :episodenumber, :image  )
     end
-  
-    def set_user
-      @user = User.find(params[:user_id])
+
+    def set_anime
+      @anime = Anime.find(params[:id])
     end
-  
-    def set_user_anime
-      @anime = @user.animes.find_by!(id: params[:id]) if @user
-  end
 end

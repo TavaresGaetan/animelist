@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.create!(user_params)
-    json_response(@user)
+    json_response(@user, :created)
   end
 
   # GET /users/:id
