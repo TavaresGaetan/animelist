@@ -1,7 +1,8 @@
 # config/routes.rb
 Rails.application.routes.draw do
-  resources :users do
-    resources :animes
+  namespace 'api' do
+    namespace 'v1' do
+      resources :animes
+    end
   end
-  resources :animes
 end
