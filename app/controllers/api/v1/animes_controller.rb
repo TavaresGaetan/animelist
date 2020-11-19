@@ -1,11 +1,19 @@
 module Api
   module V1
     class AnimesController < ApplicationController
-      before_action :set_user_anime, only: [:show, :update, :destroy]
+      before_action :set_anime, only: [:show, :update, :destroy]
 
       # GET /animes
       def index
-        @animes = Anime.all
+				if params[:title]
+					@animes = Anime.search_by_term(params[:title])
+				elsif params[:author]
+					@animes = Anime.search_by_term(params[:author])
+				elsif params[:genre]
+					@animes = Anime.search_by_term(params[:genre])
+				else
+					@animes = Anime.all
+				end
         json_response(@animes)
       end
 
