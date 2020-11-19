@@ -11,6 +11,18 @@ module Api
 					@animes = Anime.search_by_term(params[:author])
 				elsif params[:genre]
 					@animes = Anime.search_by_term(params[:genre])
+				elsif params[:rate_sup]
+					@animes = Anime.where("rating >= ?", params[:rate_sup]) 
+				elsif params[:rate_inf]
+					@animes = Anime.where("rating <= ?", params[:rate_inf]) 
+				elsif params[:episode_sup]
+					@animes = Anime.where("episodenumber >= ?", params[:episode_sup]) 
+				elsif params[:episode_inf]
+					@animes = Anime.where("episodenumber <= ?", params[:episode_inf]) 
+				elsif params[:date_sup]
+					@animes = Anime.where("releasedate >= ?", params[:date_sup]) 
+				elsif params[:date_inf]
+					@animes = Anime.where("releasedate <= ?", params[:date_inf]) 
 				else
 					@animes = Anime.all
 				end
