@@ -46,3 +46,9 @@ group :test do
   gem 'faker'
   gem 'database_cleaner'
 end
+
+# ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
+# Java Webtoken gem
+gem 'jwt'

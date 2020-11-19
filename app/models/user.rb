@@ -1,7 +1,9 @@
 class User < ApplicationRecord
-  # model association
-  has_many :animes, dependent: :destroy
+    # encrypt password
+  has_secure_password
 
-  # validations
-  validates_presence_of :name, :password, :rights 
+  # Model associations
+  has_many :animes, foreign_key: :title
+  # Validations
+  validates_presence_of :name, :rights, :password_digest
 end
