@@ -61,5 +61,7 @@ test:
 production:
   <<: *default
   database: animelist
+  username: postgres
+  password: postgres
   adapter: postgresql
 
