@@ -47,6 +47,10 @@ group :test do
   gem 'database_cleaner'
 end
 
+group :production do
+  gem 'pg'
+end
+
 # ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 

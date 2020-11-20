@@ -52,3 +52,9 @@ test:
   username: postgres
   password: postgres
   timeout: 5000
+
+production:
+  <<: *default
+  database: animelist
+  adapter: postgresql
+
