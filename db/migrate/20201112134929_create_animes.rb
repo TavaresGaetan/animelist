@@ -8,7 +8,6 @@ class CreateAnimes < ActiveRecord::Migration[6.0]
       t.datetime :releasedate
       t.integer :episodenumber
       t.string :image
-      t.references :user
 
       t.timestamps
     end

@@ -1,6 +1,7 @@
 module Api
   module V1
     class AnimesController < ApplicationController
+      skip_before_action :authorize_request, only:[:index, :show]
       before_action :set_anime, only: [:show, :update, :destroy]
 
       # GET /animes
